@@ -1,5 +1,9 @@
 # iOSLinuxSync
-A simple Bash script that allows easy synchronisation of iOS devices on Linux
+A simple Bash script that allows easy synchronisation of iOS devices on Linux.
+
+I found using Linux much more reliable than Windows for synchronising thousands of photos. I didn't experience
+any dropouts and would reach around the theoretical maximum of USB 2.0 (20 MB/s) which allowed ~45GB of photos
+and videos to be synced in 45 minutes.
 
 ## Usage
 1. Make the script executable if it isn't already
