@@ -1,37 +1,4 @@
 #!/bin/bash
-
-# Halt script if error occurs
-set -e;
-
-# Get args from command line
-while getopts ":o:c:" opt; do
-  case $opt in
-    o) destination_path="$OPTARG"
-    ;;
-    c) convert=true
-    ;;
-    \?) echo "Invalid option -$OPTARG" >&2
-    exit 1
-    ;;
-  esac
-
-  case $OPTARG in
-    -*) echo "Option $opt needs a valid argument"
-    echo "-o destination path"
-    echo "-c convert all images from HEIC to JPG (optional)"
-    exit 1
-    ;;
-  esac
-done
-
-# Check mandatory args
-if [ -z "$destination_path" ]; then
-	echo "Please provide a destination path with the -o argument...";
-	exit 1;
-fi
-
-# TODO check deps
-
 copy_files () {
 	# Read possible Apple devices into an array
 	devices_dir="/run/user/1000/gvfs"
@@ -104,5 +71,37 @@ convert_files () {
 		fi
 	done
 }
+
+# Halt script if error occurs
+set -e;
+
+# Get args from command line
+while getopts ":o:c:" opt; do
+  case $opt in
+    o) destination_path="$OPTARG"
+    ;;
+    c) convert="$OPTARG"
+    ;;
+    \?) echo "Invalid option -$OPTARG" >&2
+    exit 1
+    ;;
+  esac
+
+  case $OPTARG in
+    -*) echo "Option $opt needs a valid argument"
+    echo "-o destination path"
+    echo "-c convert all images from HEIC to JPG (optional)"
+    exit 1
+    ;;
+  esac
+done
+
+# Check mandatory args
+if [ -z "$destination_path" ]; then
+        echo "Please provide a destination path with the -o argument...";
+        exit 1;
+fi
+
+# TODO check deps
 
 copy_files
