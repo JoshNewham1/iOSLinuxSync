@@ -25,10 +25,7 @@ copy_files () {
 		exit 1;
 	fi
 
-	source_path="$devices_dir/${dirs[$(($choice-1))]}";
-	if [[ $source_path == *"gphoto"* ]]; then
-		source_path="$source_path/DCIM/";
-	fi
+	source_path="$devices_dir/${dirs[$(($choice-1))]}/";
 
 	echo
 	echo "Initiating copy from $source_path to $destination_path...";
