@@ -1,4 +1,5 @@
 #!/bin/bash
+
 copy_files () {
 	# Read possible Apple devices into an array
 	devices_dir="/run/user/1000/gvfs"
